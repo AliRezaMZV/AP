@@ -9,19 +9,21 @@ public class SymbolDesign{
         int middleSpacesCount = Math.max(0, lineCapacity-2*k);
         int borderSpacesCount = ((2*n+1)-(leftStarsCount + rightStarsCount + middleSpacesCount))/2;
         
+        StringBuilder line = new StringBuilder();
+
         for(int i = 0; i < borderSpacesCount; i++)
-            System.out.print(" ");
+            line.append(" ");
         
         for(int i = 0; i < leftStarsCount; i++)
-            System.out.print("*");
+            line.append("*");
         
         for(int i = 0; i < middleSpacesCount; i++)
-            System.out.print(" ");
+            line.append(" ");
 
         for(int i = 0; i < rightStarsCount; i++)
-            System.out.print("*");
+            line.append("*");
         
-        System.out.println();
+        System.out.println(line);
 
         return;
     }
@@ -46,8 +48,8 @@ public class SymbolDesign{
         int n, k;
 
         Scanner scan = new Scanner(System.in);
-        n = scan.nextInt();  
-        k = scan.nextInt();
+        k = scan.nextInt();  
+        n = scan.nextInt();
         scan.close();
 
         printUpperHalf(n, k);
