@@ -9,20 +9,21 @@ public class DisciplinaryCommittee{
             if(playerName.equals(allowedPlayers[i]))
                 return;
 
-        delinquentedTeams.add(playerTeamName+"\n");
+        delinquentedTeams.add(playerTeamName);
 
         return;
     }
 
-    public static void checkHavingTeam(String playerName, String playerTeamName, String[][] teamsPlayers, int[] teamsPlayersCount, String[] teamsNames, 
-                                       SortedSet<String>delinquentedTeams){
+    public static void checkHavingTeam(String playerName, int playerId, String playerTeamName, String[][] teamsPlayers, int[] teamsPlayersCount, 
+                                       String[] teamsNames, SortedSet<String>delinquentedTeams){
         for(int i = 0; i < teamsPlayers.length; i++)
             for(int j = 0; j < teamsPlayersCount[i]; j++)
-                if(playerName.equals(teamsPlayers[i][j]) && !playerTeamName.equals(teamsNames[i])){
-                    delinquentedTeams.add(playerTeamName);
-                    delinquentedTeams.add(teamsNames[i]);
-                }
-
+                if(playerName.equals(teamsPlayers[i][j]))
+                    if(!playerTeamName.equals(teamsNames[i]) || j!=playerId){ 
+                        delinquentedTeams.add(playerTeamName);
+                        delinquentedTeams.add(teamsNames[i]);
+                    }
+                
         return;
     }
 
@@ -53,7 +54,7 @@ public class DisciplinaryCommittee{
                 teamsPlayers[i][j] = scan.nextLine();
 
                 checkIsAllowedPlayer(teamsPlayers[i][j], teamsNames[i], allowedPlayers, delinquentTeams); 
-                checkHavingTeam(teamsPlayers[i][j], teamsNames[i], teamsPlayers, teamsPlayersCount, teamsNames, delinquentTeams);
+                checkHavingTeam(teamsPlayers[i][j], j, teamsNames[i], teamsPlayers, teamsPlayersCount, teamsNames, delinquentTeams);
             }
         }
         scan.close();
