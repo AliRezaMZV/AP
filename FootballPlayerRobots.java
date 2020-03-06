@@ -65,7 +65,7 @@ public class FootballPlayerRobots{
         
         pos += 10;
         int dist = getNum(str, new int[]{pos});
-        
+     
         if(Math.sqrt(x*x+y*y)-(double)dist <= 10)
             return true;
         
@@ -90,15 +90,17 @@ public class FootballPlayerRobots{
            
             if(input.charAt(pos+2) == 'f'){
                 int dist = getDist(input, pos);
-                
-                if(dist < 10)
-                    isForwardShoot = true;
-                    
+
                 if(dist>lastDist && checkGoal(input, pos) && isForwardShoot){
                     goal++;
                     isForwardShoot = false;
                 }
+                else if(dist <= lastDist)
+                   isForwardShoot = false;
                 
+                if(dist <= 10)   
+                    isForwardShoot = true;
+               
                 lastDist = dist;
                 
                 lastPos = findDataEnd(input, pos);
@@ -108,8 +110,8 @@ public class FootballPlayerRobots{
             else{
                 int dist = getDist(input, pos);
                 
-                if(dist < 10)  
-                    isForwardShoot = false;
+               // if(dist < 10)  
+                 //   isForwardShoot = false;
 
                 lastPos = findDataEnd(input, pos);
             }
