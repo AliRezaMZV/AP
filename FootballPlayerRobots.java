@@ -107,14 +107,8 @@ public class FootballPlayerRobots{
                     
                 continue;
             }
-            else{
-                int dist = getDist(input, pos);
-                
-               // if(dist < 10)  
-                 //   isForwardShoot = false;
-
+            else
                 lastPos = findDataEnd(input, pos);
-            }
         }
         
         System.out.println(goal);
