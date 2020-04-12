@@ -2,6 +2,8 @@ import java.util.Scanner;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+//git testing comment
+
 public class DisciplinaryCommittee{
 
     public static void checkIsAllowedPlayer(String playerName, String playerTeamName, String[] allowedPlayers, SortedSet<String>delinquentedTeams){
